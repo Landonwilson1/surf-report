@@ -1,5 +1,7 @@
 let url = 'https://www.ndbc.noaa.gov/data/realtime2/46029.spec';
 
+export const sayHello = (string) => string;
+
 fetch(url)
   .then((resp) => resp.text())
   .then((data) => {
