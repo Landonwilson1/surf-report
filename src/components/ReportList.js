@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './SurfReport.css';
 
 class ReportList extends Component {
   constructor(props) {
@@ -24,10 +25,8 @@ componentDidMount() {
      //splits response into array w/string values equalling rows
      let separateRows = data.split(/\n/).slice(0,20)
      let parsedRows = separateRows.map(row => parseRow(row))
-     console.log('data', parsedRows)
 
      let dataRows = parsedRows.slice(2,22)
-     console.log("data:", dataRows)
      function assignObjects(e) {
          let newRow = {};
          newRow['YY'] = e[0];
@@ -49,18 +48,39 @@ componentDidMount() {
      }
 
     let dataObjects = dataRows.map(row => assignObjects(row))
-
+    console.log('data objects:', dataObjects)
+    this.setState({buoyRecords: dataObjects, lastUpdate: dataObjects[0]})
    });
 
-  this.setState({buoyRecords: ['component mounted'], lastUpdate: {name: 'jason', age: 33}})
 }
 
 render() {
   return(
-    <div>
-      <h1>ReportList Works</h1>
-      <h2>{this.state.buoyRecords[0]}</h2>
-      <h2>{this.state.lastUpdate.name} {this.state.lastUpdate.age ? this.state.lastUpdate.age : ''}</h2>
+    <div className='wrapper'>
+
+      <div className='property' id='summary'>
+        <p>Last Updated: <br/> Thursday, March 21 2:00pm</p>
+        <p id='surf-score'>3.2</p>
+        <p>bottom text</p>
+      </div>
+
+      <div className='property'>
+        <p>5</p>
+        <p>SE</p>
+        <p>Wind Direction</p>
+      </div>
+
+      <div className='property'>
+        <p>3</p>
+        <p>10 sec</p>
+        <p>Swell Period</p>
+      </div>
+
+      <div className='property'>
+        <p>3</p>
+        <p>21</p>
+        <p>Wave Size</p>
+      </div>
     </div>
   )
 }
