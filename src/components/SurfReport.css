@@ -1,10 +1,6 @@
-html, body {
+html, body, p {
   margin: 0px;
   padding: 0px;
-}
-
-p {
-  margin: 0px
 }
 
 .wrapper {
@@ -13,19 +9,17 @@ p {
   grid-template-rows: 60vh 20vh;
   justify-items: center;
   align-items: center;
-  border: 1px solid black;
-  max-width: 60%;
+  max-width: 800px;
   margin-right: auto;
   margin-left: auto;
 }
 
 #surf-score {
   font-size: 10em;
+  background: lightblue;
 }
 
 #summary {
-  /* background-image: url('../resources/buoy.png'); */
-  /* background: white; */
   grid-column: 1/4;
 }
 

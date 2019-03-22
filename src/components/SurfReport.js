@@ -108,7 +108,7 @@ class SurfReport extends Component {
         <div className='property' id='summary'>
           <p style={{fontSize: '2.5em', background: 'black', color: 'white'}}>Today's Surf Score:</p>
           <p id='surf-score'>{combinedSurfScore}</p>
-          <code>Last Updated: <br/>{lastUpdatedTime} <br/>(hourly)</code>
+          <p style={{fontSize: '1.5em', background: 'lightgrey'}}><strong>Last Updated: <br/>{lastUpdatedTime}</strong><br/></p>
         </div>
 
         <div className='property'>
