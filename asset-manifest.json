@@ -1,13 +1,13 @@
 {
-  "main.css": "/surf-report/static/css/main.b7e46667.chunk.css",
-  "main.js": "/surf-report/static/js/main.bbc346ec.chunk.js",
-  "main.js.map": "/surf-report/static/js/main.bbc346ec.chunk.js.map",
+  "main.css": "/surf-report/static/css/main.c9a49322.chunk.css",
+  "main.js": "/surf-report/static/js/main.f7c4aa90.chunk.js",
+  "main.js.map": "/surf-report/static/js/main.f7c4aa90.chunk.js.map",
   "runtime~main.js": "/surf-report/static/js/runtime~main.7df98458.js",
   "runtime~main.js.map": "/surf-report/static/js/runtime~main.7df98458.js.map",
   "static/js/2.fd987fb2.chunk.js": "/surf-report/static/js/2.fd987fb2.chunk.js",
   "static/js/2.fd987fb2.chunk.js.map": "/surf-report/static/js/2.fd987fb2.chunk.js.map",
   "index.html": "/surf-report/index.html",
-  "precache-manifest.67c3ee5a545b7fd311674fd54e8fcbe3.js": "/surf-report/precache-manifest.67c3ee5a545b7fd311674fd54e8fcbe3.js",
+  "precache-manifest.0d971f8f4e7829143adc0d3ff7afd583.js": "/surf-report/precache-manifest.0d971f8f4e7829143adc0d3ff7afd583.js",
   "service-worker.js": "/surf-report/service-worker.js",
-  "static/css/main.b7e46667.chunk.css.map": "/surf-report/static/css/main.b7e46667.chunk.css.map"
+  "static/css/main.c9a49322.chunk.css.map": "/surf-report/static/css/main.c9a49322.chunk.css.map"
 }
