@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "f4239ee32e0ea1ed9cb1",
-    "url": "/surf-report/static/css/main.c9a49322.chunk.css"
+    "revision": "e218da4d6478c523b7a0",
+    "url": "/surf-report/static/css/main.32111b52.chunk.css"
   },
   {
-    "revision": "f4239ee32e0ea1ed9cb1",
-    "url": "/surf-report/static/js/main.f7c4aa90.chunk.js"
+    "revision": "e218da4d6478c523b7a0",
+    "url": "/surf-report/static/js/main.a4488231.chunk.js"
   },
   {
     "revision": "fbedb1c3cd7117c57562",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/surf-report/static/js/2.fd987fb2.chunk.js"
   },
   {
-    "revision": "75b1939a2a64c9f3063a7d0f64353721",
+    "revision": "f0d29a139bd0ae0a6f63ef957e23ed6d",
     "url": "/surf-report/index.html"
   }
 ];
