@@ -43,6 +43,9 @@ class ReportList extends Component {
         mm: "00"
       }
     }
+    this.getWindDirectionScore = this.getWindDirectionScore.bind(this);
+    this.getSwellPeriodScore = this.getSwellPeriodScore.bind(this);
+    this.getWaveSizeScore = this.getWaveSizeScore.bind(this);
 
   }
 
@@ -89,45 +92,67 @@ class ReportList extends Component {
 
   }
 
-  getWindDirectionScore(condition) {
-
+  getWindDirectionScore(WWD) {
+    if(WWD == 'E') {
+      return 5;
+    } else if (WWD == 'NE'){
+      return 4;
+    } else if(WWD == 'SE'){
+      return 4;
+    } else if(WWD == 'S'){
+      return 3;
+    } else {
+      return 1;
+    }
   }
 
-  getSwellPeriodScore(condition) {
-
+  getSwellPeriodScore(SwP) {
+    if(SwP < 10) {
+      return 1;
+    } else if (SwP >= 10 && SwP < 12){
+      return 2;
+    } else if(SwP >= 12 && SwP < 16){
+      return 3;
+    } else if(SwP >= 16){
+      return 5;
+    }
   }
 
   getWaveSizeScore(SwP, SwH) {
-    const condition = SwP * SwH;
-    if(condition < 10) {
+    const waveSize = SwP * SwH;
+    if(waveSize < 10) {
       return 1;
-    } else if (condition > 10 && condition <= 19){
+    } else if (waveSize > 10 && waveSize <= 19){
       return 2;
-    } else if(condition > 19 && condition <= 24){
+    } else if(waveSize > 19 && waveSize <= 24){
       return 3;
-    } else if(condition > 24 && condition <= 30){
+    } else if(waveSize > 24 && waveSize <= 30){
       return 4;
-    } else if(condition > 30){
+    } else if(waveSize > 30){
       return 5;
     }
   }
 
   render() {
     const last = this.state.lastUpdate
-    const lastUpdatedTime = `${last.MM}/${last.DD}/${last.YY}, ${last.hh}:${last.mm}`
-    const windDirection = this.state.lastUpdate.SwD
-    const windDirectionScore = 5
-    const swellPeriod = 'swellPeriod'
-    const swellPeriodScore = 4
-    const waveSize = 'thing * thing'
-    const waveSizeScore = 3;
-    const combinedSurfScore = (windDirectionScore + swellPeriodScore + waveSizeScore) / 3;
+    const lastUpdatedTime = `${last.MM}/${last.DD}/${last.YY} @ ${last.hh}:${last.mm}`
+
+    const windDirection = last.SwD
+    const windDirectionScore = this.getWindDirectionScore(last.WWD);
+
+    const swellPeriod = last.SwP
+    const swellPeriodScore = this.getSwellPeriodScore(last.SwP)
+
+    const waveSize = last.SwP * last.SwH
+    const waveSizeScore = this.getWaveSizeScore(last.SwP, last.SwH)
+
+    const combinedSurfScore = ((windDirectionScore + swellPeriodScore + waveSizeScore) / 3).toFixed(2);
 
     return(
       <div className='wrapper'>
 
         <div className='property' id='summary'>
-          <p>Last Updated: <br/>{lastUpdatedTime}</p>
+          <code>Last Updated: <br/>{lastUpdatedTime} <br/>(hourly)</code>
           <p id='surf-score'>{combinedSurfScore}</p>
           <p>bottom text</p>
         </div>
