@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './SurfReport.css';
+import { getWindDirectionScore, getWaveSizeScore, getSwellPeriodScore } from './SurfReport.functions';
 
 class SurfReport extends Component {
   constructor(props) {
@@ -43,9 +44,6 @@ class SurfReport extends Component {
         mm: "00"
       }
     }
-    this.getWindDirectionScore = this.getWindDirectionScore.bind(this);
-    this.getSwellPeriodScore = this.getSwellPeriodScore.bind(this);
-    this.getWaveSizeScore = this.getWaveSizeScore.bind(this);
   }
 
   componentDidMount() {
@@ -84,51 +82,9 @@ class SurfReport extends Component {
        }
 
       let dataRowObjects = dataRows.map(row => assignObjects(row))
-      console.log('data objects:', dataRowObjects)
       this.setState({buoyRecords: dataRowObjects, lastUpdate: dataRowObjects[0]})
      });
 
-  }
-
-  getWindDirectionScore(WWD) {
-    if(WWD == 'E') {
-      return 5;
-    } else if (WWD == 'NE'){
-      return 4;
-    } else if(WWD == 'SE'){
-      return 4;
-    } else if(WWD == 'S'){
-      return 3;
-    } else {
-      return 1;
-    }
-  }
-
-  getSwellPeriodScore(SwP) {
-    if(SwP < 10) {
-      return 1;
-    } else if (SwP >= 10 && SwP < 12){
-      return 2;
-    } else if(SwP >= 12 && SwP < 16){
-      return 3;
-    } else if(SwP >= 16){
-      return 5;
-    }
-  }
-
-  getWaveSizeScore(SwP, SwH) {
-    const waveSize = SwP * SwH;
-    if(waveSize < 10) {
-      return 1;
-    } else if (waveSize > 10 && waveSize <= 19){
-      return 2;
-    } else if(waveSize > 19 && waveSize <= 24){
-      return 3;
-    } else if(waveSize > 24 && waveSize <= 30){
-      return 4;
-    } else if(waveSize > 30){
-      return 5;
-    }
   }
 
   render() {
@@ -136,13 +92,13 @@ class SurfReport extends Component {
     const lastUpdatedTime = `${last.MM}/${last.DD}/${last.YY} @ ${last.hh}:${last.mm}`
 
     const windDirection = last.SwD
-    const windDirectionScore = this.getWindDirectionScore(last.WWD);
+    const windDirectionScore = getWindDirectionScore(last.WWD);
 
     const swellPeriod = last.SwP
-    const swellPeriodScore = this.getSwellPeriodScore(last.SwP)
+    const swellPeriodScore = getSwellPeriodScore(last.SwP)
 
     const waveSize = last.SwP * last.SwH
-    const waveSizeScore = this.getWaveSizeScore(last.SwP, last.SwH)
+    const waveSizeScore = getWaveSizeScore(last.SwP, last.SwH)
 
     const combinedSurfScore = ((windDirectionScore + swellPeriodScore + waveSizeScore) / 3).toFixed(2);
 
@@ -177,6 +133,5 @@ class SurfReport extends Component {
   }
 
 }
-
 
 export default SurfReport;
