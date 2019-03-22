@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './SurfReport.css';
 
-class ReportList extends Component {
+class SurfReport extends Component {
   constructor(props) {
     super(props)
 
@@ -46,7 +46,6 @@ class ReportList extends Component {
     this.getWindDirectionScore = this.getWindDirectionScore.bind(this);
     this.getSwellPeriodScore = this.getSwellPeriodScore.bind(this);
     this.getWaveSizeScore = this.getWaveSizeScore.bind(this);
-
   }
 
   componentDidMount() {
@@ -60,11 +59,10 @@ class ReportList extends Component {
          return parsedRowArray
        }
 
-       //splits response into array w/string values equalling rows
-       let separateRows = data.split(/\n/).slice(0,20)
+       let separateRows = data.split(/\n/)
        let parsedRows = separateRows.map(row => parseRow(row))
 
-       let dataRows = parsedRows.slice(2,22)
+       let dataRows = parsedRows.slice(2)
        function assignObjects(e) {
            let newRow = {};
            newRow['YY'] = e[0];
@@ -85,9 +83,9 @@ class ReportList extends Component {
          return newRow;
        }
 
-      let dataObjects = dataRows.map(row => assignObjects(row))
-      console.log('data objects:', dataObjects)
-      this.setState({buoyRecords: dataObjects, lastUpdate: dataObjects[0]})
+      let dataRowObjects = dataRows.map(row => assignObjects(row))
+      console.log('data objects:', dataRowObjects)
+      this.setState({buoyRecords: dataRowObjects, lastUpdate: dataRowObjects[0]})
      });
 
   }
@@ -154,25 +152,25 @@ class ReportList extends Component {
         <div className='property' id='summary'>
           <code>Last Updated: <br/>{lastUpdatedTime} <br/>(hourly)</code>
           <p id='surf-score'>{combinedSurfScore}</p>
-          <p>bottom text</p>
+          <p>SURFING NOT RECOMMENDED</p>
         </div>
 
         <div className='property'>
-          <p>{windDirectionScore}</p>
-          <p>{windDirection}</p>
-          <p>Wind Direction</p>
+          <p style={{fontSize: '1.4em', background: 'black', color: 'white'}}>{windDirectionScore}</p>
+          <p style={{fontSize: '3em'}}>{windDirection}</p>
+          <p style={{background: 'black', color: 'white'}}>Wind Direction</p>
         </div>
 
         <div className='property'>
-          <p>{swellPeriodScore}</p>
-          <p>{swellPeriod}</p>
-          <p>Swell Period</p>
+          <p style={{fontSize: '1.4em', background: 'black', color: 'white'}}>{swellPeriodScore}</p>
+          <p style={{fontSize: '3em'}}>{swellPeriod}</p>
+          <p style={{background: 'black', color: 'white'}}>Swell Period</p>
         </div>
 
         <div className='property'>
-          <p>{waveSizeScore}</p>
-          <p>{waveSize}</p>
-          <p>Wave Size</p>
+          <p style={{fontSize: '1.4em', background: 'black', color: 'white'}}>{waveSizeScore}</p>
+          <p style={{fontSize: '3em'}}>{waveSize}</p>
+          <p style={{background: 'black', color: 'white'}}>Wave Size</p>
         </div>
       </div>
     )
@@ -181,4 +179,4 @@ class ReportList extends Component {
 }
 
 
-export default ReportList
+export default SurfReport;

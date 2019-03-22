@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import ReportList from './ReportList';
+import SurfReport from './SurfReport';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <ReportList />
+        <SurfReport />
       </div>
     );
   }
