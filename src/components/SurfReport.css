@@ -24,20 +24,15 @@ p {
 }
 
 #summary {
-/*   border: 1px solid black;
-  display: grid;
-  align-items: center; */
-  background: lightgreen;
+  /* background-image: url('../resources/buoy.png'); */
+  /* background: white; */
   grid-column: 1/4;
-/*   width: 100%;
-  height: 100%;
-  text-align: center */
 }
 
 .property {
   width: 100%;
   height: 100%;
-  border: 1px solid red;
+  border: 1px solid black;
   text-align: center;
   margin: 0px;
   display: grid;
@@ -47,7 +42,7 @@ p {
 }
 
 .property p {
-  border: 1px solid blue;
+  border: 1px solid black;
   width: 100%;
   height: 100%;
   margin: 5px;

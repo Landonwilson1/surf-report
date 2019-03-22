@@ -106,27 +106,27 @@ class SurfReport extends Component {
       <div className='wrapper'>
 
         <div className='property' id='summary'>
-          <code>Last Updated: <br/>{lastUpdatedTime} <br/>(hourly)</code>
+          <p style={{fontSize: '2.5em', background: 'black', color: 'white'}}>Today's Surf Score:</p>
           <p id='surf-score'>{combinedSurfScore}</p>
-          <p>SURFING NOT RECOMMENDED</p>
+          <code>Last Updated: <br/>{lastUpdatedTime} <br/>(hourly)</code>
         </div>
 
         <div className='property'>
-          <p style={{fontSize: '1.4em', background: 'black', color: 'white'}}>{windDirectionScore}</p>
-          <p style={{fontSize: '3em'}}>{windDirection}</p>
           <p style={{background: 'black', color: 'white'}}>Wind Direction</p>
+          <p style={{fontSize: '3em'}}>{windDirection} <span style={{fontSize: '.4em'}}>&#8598;</span></p>
+          <p style={{fontSize: '1.4em', background: 'black', color: 'white'}}>{windDirectionScore}</p>
         </div>
 
         <div className='property'>
-          <p style={{fontSize: '1.4em', background: 'black', color: 'white'}}>{swellPeriodScore}</p>
-          <p style={{fontSize: '3em'}}>{swellPeriod}</p>
           <p style={{background: 'black', color: 'white'}}>Swell Period</p>
+          <p style={{fontSize: '3em'}}>{swellPeriod}<span style={{fontSize: '.4em'}}>seconds</span></p>
+          <p style={{fontSize: '1.4em', background: 'black', color: 'white'}}>{swellPeriodScore}</p>
         </div>
 
         <div className='property'>
+        <p style={{background: 'black', color: 'white'}}>Wave Size</p>
+          <p style={{fontSize: '3em'}}>{waveSize}<span style={{fontSize: '.4em'}}>meters</span></p>
           <p style={{fontSize: '1.4em', background: 'black', color: 'white'}}>{waveSizeScore}</p>
-          <p style={{fontSize: '3em'}}>{waveSize}</p>
-          <p style={{background: 'black', color: 'white'}}>Wave Size</p>
         </div>
       </div>
     )
