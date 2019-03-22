@@ -69,6 +69,7 @@ $ npm run test
 
 - Page does not auto-refresh when new NOAA data is available. User must manually refresh page to see updated data.
 - Wind Direction indicator symbol is static 'NW' value. Needs additional logic to update direction symbol against all valid Wind Direction values.
+- Hosted application is unable to fetch NOAA data to due to access control checks (not allowed by Access-Control-Allow-Origin). View locally hosted clone for current data viewing.
 
 ## Support and contact details
 
