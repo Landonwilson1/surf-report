@@ -6,11 +6,44 @@ class ReportList extends Component {
     super(props)
 
     this.state = {
-      buoyRecords: ['state works'],
-      lastUpdate: {name: 'jared'}
+      buoyRecords: [
+        {
+          APD: "7.2",
+          DD: "21",
+          MM: "03",
+          MWD: "243",
+          STEEPNESS: "SWELL",
+          SwD: "WSW",
+          SwH: "1.7",
+          SwP: "12.9",
+          WVHT: "1.8",
+          WWD: "SSW",
+          WWH: "0.6",
+          WWP: "4.2",
+          YY: "2019",
+          hh: "22",
+          mm: "00"
+        }
+      ],
+      lastUpdate: {
+        APD: "7.2",
+        DD: "21",
+        MM: "03",
+        MWD: "243",
+        STEEPNESS: "SWELL",
+        SwD: "WSW",
+        SwH: "1.7",
+        SwP: "12.9",
+        WVHT: "1.8",
+        WWD: "SSW",
+        WWH: "0.6",
+        WWP: "4.2",
+        YY: "2019",
+        hh: "22",
+        mm: "00"
+      }
     }
 
-    this.showWaveSize = this.showWaveSize.bind(this);
   }
 
   componentDidMount() {
@@ -56,40 +89,63 @@ class ReportList extends Component {
 
   }
 
-  showWaveSize() {
-    const wwh = this.state.lastUpdate.WWH;
-    if(wwh) {
-      return wwh;
+  getWindDirectionScore(condition) {
+
+  }
+
+  getSwellPeriodScore(condition) {
+
+  }
+
+  getWaveSizeScore(SwP, SwH) {
+    const condition = SwP * SwH;
+    if(condition < 10) {
+      return 1;
+    } else if (condition > 10 && condition <= 19){
+      return 2;
+    } else if(condition > 19 && condition <= 24){
+      return 3;
+    } else if(condition > 24 && condition <= 30){
+      return 4;
+    } else if(condition > 30){
+      return 5;
     }
-    return 'No Data'
   }
 
   render() {
-    const waveSize = this.showWaveSize()
+    const last = this.state.lastUpdate
+    const lastUpdatedTime = `${last.MM}/${last.DD}/${last.YY}, ${last.hh}:${last.mm}`
+    const windDirection = this.state.lastUpdate.SwD
+    const windDirectionScore = 5
+    const swellPeriod = 'swellPeriod'
+    const swellPeriodScore = 4
+    const waveSize = 'thing * thing'
+    const waveSizeScore = 3;
+    const combinedSurfScore = (windDirectionScore + swellPeriodScore + waveSizeScore) / 3;
 
     return(
       <div className='wrapper'>
 
         <div className='property' id='summary'>
-          <p>Last Updated: <br/> Thursday, March 21 2:00pm</p>
-          <p id='surf-score'>3.2</p>
+          <p>Last Updated: <br/>{lastUpdatedTime}</p>
+          <p id='surf-score'>{combinedSurfScore}</p>
           <p>bottom text</p>
         </div>
 
         <div className='property'>
-          <p>5</p>
-          <p>SE</p>
+          <p>{windDirectionScore}</p>
+          <p>{windDirection}</p>
           <p>Wind Direction</p>
         </div>
 
         <div className='property'>
-          <p>3</p>
-          <p>10 sec</p>
+          <p>{swellPeriodScore}</p>
+          <p>{swellPeriod}</p>
           <p>Swell Period</p>
         </div>
 
         <div className='property'>
-          <p>3</p>
+          <p>{waveSizeScore}</p>
           <p>{waveSize}</p>
           <p>Wave Size</p>
         </div>
