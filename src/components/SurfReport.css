@@ -6,7 +6,7 @@ html, body, p {
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 60vh 20vh;
+  grid-template-rows: 60vh 25vh;
   justify-items: center;
   align-items: center;
   max-width: 800px;
