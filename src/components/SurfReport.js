@@ -49,7 +49,10 @@ class SurfReport extends Component {
   componentDidMount() {
     let url = 'https://www.ndbc.noaa.gov/data/realtime2/46029.spec';
 
-    fetch(url)
+    fetch(url, {
+      method: "GET",
+      mode: "no-cors",
+    })
       .then((resp) => resp.text())
       .then((data) => {
        function parseRow(string) {
