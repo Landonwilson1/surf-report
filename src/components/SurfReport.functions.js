@@ -1,11 +1,11 @@
 function getWindDirectionScore(WWD) {
-  if(WWD == 'E') {
+  if(WWD === 'E') {
     return 5;
-  } else if (WWD == 'NE'){
+  } else if (WWD === 'NE'){
     return 4;
-  } else if(WWD == 'SE'){
+  } else if(WWD === 'SE'){
     return 4;
-  } else if(WWD == 'S'){
+  } else if(WWD ==='S'){
     return 3;
   } else {
     return 1;
