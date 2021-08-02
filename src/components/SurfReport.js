@@ -92,7 +92,7 @@ class SurfReport extends Component {
 
   render() {
     const last = this.state.lastUpdate
-    const lastUpdatedTime = `${last.MM}/${last.DD}/${last.YY} @ ${last.hh}:${last.mm}`
+    //const lastUpdatedTime = `${last.MM}/${last.DD}/${last.YY} @ ${last.hh}:${last.mm}`
 
     const windDirection = last.SwD
     const windDirectionScore = getWindDirectionScore(last.WWD);
@@ -111,7 +111,7 @@ class SurfReport extends Component {
         <div className='property' id='summary'>
           <p style={{fontSize: '2.5em', background: 'black', color: 'white'}}>Today's Surf Score:</p>
           <p id='surf-score'>{combinedSurfScore}</p>
-          <p style={{fontSize: '1.5em', background: 'lightgrey'}}><strong>Last Updated: <br/>{lastUpdatedTime}</strong><br/></p>
+          {/* <p style={{fontSize: '1.5em', background: 'lightgrey'}}><strong>Last Updated: <br/>{lastUpdatedTime}</strong><br/></p> */}
         </div>
 
         <div className='property'>
